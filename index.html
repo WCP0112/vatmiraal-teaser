@@ -610,16 +610,16 @@
     </footer>
 
     <script>
-        // FIXED: Minimal JavaScript - No form interference
-        
-        // Optional: Show loading state without preventing submission
         document.getElementById('betaForm').addEventListener('submit', function(e) {
-            // DON'T prevent default - let form submit naturally
-            // Just show visual feedback
             const submitButton = this.querySelector('button[type="submit"]');
             submitButton.textContent = 'Submitting...';
-            submitButton.disabled = true;
-            // Form will submit normally to Netlify after this
+    
+            // Use a short timeout to allow the form submission to begin
+            // BEFORE the button is disabled. This prevents the browser from
+            // cancelling the submission.
+            setTimeout(() => {
+                submitButton.disabled = true;
+            }, 100); // 100ms is a safe, imperceptible delay
         });
 
         // Analytics tracking (unchanged)
