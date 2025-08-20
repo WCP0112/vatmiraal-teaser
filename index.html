@@ -636,18 +636,18 @@
 
     <script>
         // Simple Netlify form submission
+        // REMOVE the entire JavaScript event listener
+        // Let Netlify handle the form naturally
+        
+        // OR if you want to keep the loading state, do this:
         document.getElementById('betaForm').addEventListener('submit', function(e) {
-            // Let Netlify handle the form submission naturally
-            // Show loading state
+            // Don't prevent default - let form submit naturally
+            // Just show loading state
             const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
             submitButton.textContent = 'Submitting...';
             submitButton.disabled = true;
-            
-            // Netlify will handle the rest automatically
-            // After submission, user gets redirected to a thank you page
+            // Form will submit normally after this
         });
-
         // Simple analytics tracking
         function trackPageView() {
             if (typeof gtag !== 'undefined') {
